@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaService } from '../lista.service';
+import { ListaService, Osoba } from '../lista.service';
 
 @Component({
   selector: 'app-lista',
@@ -9,12 +9,13 @@ import { ListaService } from '../lista.service';
 export class ListaComponent implements OnInit {
 
   public a:String;
+  public osoby:Osoba[];
 
   constructor(private listaService: ListaService) { 
     this.a = listaService.test();
-    listaService.pobierz().subscribe(
-      (val) => {
-        console.log(val);
+    listaService.pobierzOsoby().subscribe(
+      (val:Osoba[]) => {
+       this.osoby = val;
       }
     );
   }

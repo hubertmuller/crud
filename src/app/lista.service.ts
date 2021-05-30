@@ -11,11 +11,23 @@ export class ListaService {
 
   }
 
-  pobierz(): Observable<any> {
-    return this.http.get('http://localhost:3200/api/lista');
+  pobierzOsoby(): Observable<Osoba[]> {
+    return this.http.get<Osoba[]>('http://localhost:3200/api/lista');
+  }
+
+  pobierzOsobe(id: number): Observable<Osoba> {
+    return this.http.get<Osoba>('http://localhost:3200/api/lista/' + id.toString(10));
   }
 
   test(): String {
     return "jestem tutaj - twoj serwis";
   }
+}
+
+export interface Osoba {
+  id: number;
+  imie: String;
+  nazwisko: String;
+  wiek?: number;
+  pesel?: String;
 }

@@ -20,9 +20,24 @@ const server = http.createServer( (req, res) => {
                 "id": 2,
                 "imie": "Adam",
                 "nazwisko": "Nowak"
+            },
+            {
+                "id": 3,
+                "imie": "Stefan",
+                "nazwisko": "Kowalski"
             }
         ]`);
-    } else {
+    } else if (req.method === 'GET' && req.url.startsWith('/api/lista/')) {
+        var id = req.url.split("/")[3];
+        res.end(`{
+            "id": ` + id +`,
+            "imie": "Tomasz",
+            "nazwisko": "Król`+ Math.ceil(Math.random()*32) +`",
+            "wiek": 32,
+            "pesel": "2412421412"
+        }`);
+    }
+    else {
         res.end();
     }
 } );

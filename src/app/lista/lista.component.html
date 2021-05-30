@@ -4,12 +4,16 @@
         <table>
             <caption>Lista zapisanych {{a}}</caption>
             <tr>
+                <th>Id</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
+                <th>Operacje</th>
             </tr>
-            <tr>
-                <td>Jan</td>
-                <td>Kowalski</td>
+            <tr *ngFor="let osoba of osoby">
+                <td>{{osoba.id}}</td>
+                <td>{{osoba.imie}}</td>
+                <td>{{osoba.nazwisko}}</td>
+                <td><a [routerLink]="['/lista','detale', osoba.id]">Detale</a></td>
             </tr>
         </table>
     </div>
