@@ -9,6 +9,7 @@ import { ListaComponent } from './lista/lista.component';
 import { DetaleComponent } from './detale/detale.component';
 import { FormularzComponent } from './formularz/formularz.component';
 import { UsunComponent } from './usun/usun.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UsunComponent } from './usun/usun.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

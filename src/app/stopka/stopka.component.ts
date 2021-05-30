@@ -7,17 +7,19 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class StopkaComponent implements OnInit, OnDestroy {
 
-  constructor() { 
+  constructor() {
     console.log('konstruktor');
+  }
+
+  ngOnInit(): void {
+    console.log('dziendobry');
   }
 
   ngOnDestroy(): void {
     console.log('do widzenia');
   }
 
-  ngOnInit(): void {
-    console.log('dziendobry');
-  }
+
   
 
 }
