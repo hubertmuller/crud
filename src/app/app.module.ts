@@ -10,6 +10,7 @@ import { DetaleComponent } from './detale/detale.component';
 import { FormularzComponent } from './formularz/formularz.component';
 import { UsunComponent } from './usun/usun.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

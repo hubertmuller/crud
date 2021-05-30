@@ -1,1 +1,14 @@
-<p>formularz works!</p>
+<h2>Dodaj osobę</h2>
+
+{{ forma.value | json }}
+
+<form [formGroup]="forma">
+    <p>
+        <label for="imieid">Imię</label>
+        <input id="imieid" formControlName="imie">
+    </p>
+    <p>
+        <label for="nazwiskoid">Nazwisko</label>
+        <input id="nazwiskoid" formControlName="nazwisko">
+    </p>
+</form>
