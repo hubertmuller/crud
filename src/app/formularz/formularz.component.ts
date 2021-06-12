@@ -2,14 +2,18 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 class NaszValidator {
-  static reszta(wartosc: number, modulo: number) {
+  static wymaganyWiek(dolna: number, gorna: number) {
     return function (control: FormControl) {
       const biezacaWartosc = control.value;
 
-      if (biezacaWartosc % wartosc === modulo) {
+      const biezacaData = new Date();
+
+      const wiek = biezacaData.getFullYear() - biezacaWartosc;
+
+      if (wiek >= dolna && wiek <=gorna) {
         return null;
       } else {
-        return { "zle": "reszta z dzielenia " + biezacaWartosc + " przez " + wartosc + " nie wynosi " + modulo};
+        return { "poprawnywiek": "Twoj wiek nie mieści się w przedziale od " + dolna + " do" + gorna + " lat"};
       }
     }
   }
@@ -23,10 +27,15 @@ class NaszValidator {
 export class FormularzComponent implements OnInit, OnDestroy {
 
   public forma:FormGroup = new FormGroup( {
-    imie: new FormControl('Adam', {validators: [NaszValidator.reszta(3,2)], updateOn: "change"}),
+    imie: new FormControl('Adam', {validators: [], updateOn: "change"}),
     nazwisko: new FormControl('Kowalski', {validators: [], updateOn: "change"}),
+    rok: new FormControl(1978, {validators: [NaszValidator.wymaganyWiek(18,100)], updateOn: "change"}),
     szczepionka: new FormControl(null, {validators: [], updateOn: "change"}),
-    plec: new FormControl(null, {validators: [Validators.required], updateOn: "change"})
+    plec: new FormControl(null, {validators: [Validators.required], updateOn: "change"}),
+    zyczenia: new FormGroup({
+      a: new FormControl(null, {validators: [], updateOn: "change"}),
+      b: new FormControl(null, {validators: [], updateOn: "change"}),
+    })
   }); 
 
 

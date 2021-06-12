@@ -9,13 +9,17 @@
     <div>
         <label for="imieid">Imię</label>
         <input type="text" id="imieid" formControlName="imie">
-        <div *ngIf="forma.controls.imie.errors">
-            {{ forma.controls.imie.errors.zle }}
-        </div>
     </div>
     <div>
         <label for="nazwiskoid">Nazwisko</label>
-        <input id="nazwiskoid" formControlName="nazwisko">
+        <input type="text" id="nazwiskoid" formControlName="nazwisko">
+    </div>
+    <div>
+        <label for="rokid">Rok urodzenia</label>
+        <input type="number" id="rokid" formControlName="rok">
+        <div *ngIf="forma.controls.rok.errors">
+            {{ forma.controls.rok.errors.poprawnywiek }}
+        </div>
     </div>
     <div>
         <label for="szczepionkaid">Szczepionka</label>
@@ -26,10 +30,23 @@
         </select>
     </div>
     <div>
+        <fieldset>
+            <legend>Płeć:</legend>
         <label for="kobietaid">kobieta</label>
         <input type="radio" formControlName="plec" value="k" id="kobietaid">
 
         <label for="mezczyznaid">mezczyzna</label>
         <input type="radio" formControlName="plec" value="m" id="mezczyznaid">
+        </fieldset>
+    </div>
+    <div [formGroup]="forma.controls.zyczenia">
+        <fieldset>
+            <legend>Życzenia:</legend>
+        <label for="kobietaid">zaswiadczenie</label>
+        <input type="checkbox" formControlName="a" value="true" id="kobietaid">
+
+        <label for="mezczyznaid">2.termin</label>
+        <input type="checkbox" formControlName="b" value="true" id="mezczyznaid">
+        </fieldset>
     </div>
 </form>

@@ -19,9 +19,6 @@ export class ListaService {
     return this.http.get<Osoba>('http://localhost:3200/api/lista/' + id.toString(10));
   }
 
-  test(): String {
-    return "jestem tutaj - twoj serwis";
-  }
 }
 
 export interface Osoba {

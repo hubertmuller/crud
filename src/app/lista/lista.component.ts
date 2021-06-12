@@ -8,11 +8,9 @@ import { ListaService, Osoba } from '../lista.service';
 })
 export class ListaComponent implements OnInit {
 
-  public a:String;
   public osoby:Osoba[];
 
   constructor(private listaService: ListaService) { 
-    this.a = listaService.test();
     listaService.pobierzOsoby().subscribe(
       (val:Osoba[]) => {
        this.osoby = val;

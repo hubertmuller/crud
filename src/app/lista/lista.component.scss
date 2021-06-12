@@ -9,3 +9,42 @@ div.lista {
 div.detale {
     flex: 1 1 0;
 }
+
+table {
+   width: 100%; 
+   border-collapse: collapse;
+}
+
+table, th {
+    border: 1px solid #ccc;
+}
+
+.lista {
+    padding: 5px;
+}
+
+caption {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #edd;
+}
+
+tr:nth-child(odd) {
+    background-color: #ddd;
+}
+
+tr:hover {
+    background-color: #f88;
+}
+
+th {
+    background-color: #ccc;
+    text-align: left;
+}
+
+td {
+    padding: 0.2rem;
+}
