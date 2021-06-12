@@ -3,16 +3,33 @@
 {{ forma.value | json }}
 
 {{ forma.controls.imie.value }}
-<p>
-{{ forma.controls.imie.errors | json}}
-</p>
+
+
 <form [formGroup]="forma">
-    <p>
+    <div>
         <label for="imieid">Imię</label>
-        <input id="imieid" formControlName="imie">
-    </p>
-    <p>
+        <input type="text" id="imieid" formControlName="imie">
+        <div *ngIf="forma.controls.imie.errors">
+            {{ forma.controls.imie.errors.zle }}
+        </div>
+    </div>
+    <div>
         <label for="nazwiskoid">Nazwisko</label>
         <input id="nazwiskoid" formControlName="nazwisko">
-    </p>
+    </div>
+    <div>
+        <label for="szczepionkaid">Szczepionka</label>
+        <select formControlName="szczepionka" id="szczepionkaid">
+            <option [ngValue]="null" disabled="disabled">Wybierz</option>
+            <option [ngValue]="'m'">Moderna</option>
+            <option [ngValue]="'j'">J&j</option>
+        </select>
+    </div>
+    <div>
+        <label for="kobietaid">kobieta</label>
+        <input type="radio" formControlName="plec" value="k" id="kobietaid">
+
+        <label for="mezczyznaid">mezczyzna</label>
+        <input type="radio" formControlName="plec" value="m" id="mezczyznaid">
+    </div>
 </form>

@@ -9,7 +9,7 @@ class NaszValidator {
       if (biezacaWartosc % wartosc === modulo) {
         return null;
       } else {
-        return { "zle": "reszta z dzielenia"+ biezacaWartosc + " przez "+ wartosc+" nie wynosi " + modulo};
+        return { "zle": "reszta z dzielenia " + biezacaWartosc + " przez " + wartosc + " nie wynosi " + modulo};
       }
     }
   }
@@ -23,8 +23,10 @@ class NaszValidator {
 export class FormularzComponent implements OnInit, OnDestroy {
 
   public forma:FormGroup = new FormGroup( {
-    imie: new FormControl('Adam', {validators: [Validators.email, NaszValidator.reszta(3,2)], updateOn: "change"}),
-    nazwisko: new FormControl('Kowalski', {validators: [], updateOn: "change"})
+    imie: new FormControl('Adam', {validators: [NaszValidator.reszta(3,2)], updateOn: "change"}),
+    nazwisko: new FormControl('Kowalski', {validators: [], updateOn: "change"}),
+    szczepionka: new FormControl(null, {validators: [], updateOn: "change"}),
+    plec: new FormControl(null, {validators: [Validators.required], updateOn: "change"})
   }); 
 
 
