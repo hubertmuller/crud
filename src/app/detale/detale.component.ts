@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { inject } from '@angular/core/testing';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ListaService, Osoba } from '../lista.service';
 

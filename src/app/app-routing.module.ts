@@ -10,7 +10,8 @@ const routes: Routes = [
     {path: 'detale/:id', component: DetaleComponent}
   ]},
   { path: 'dodaj', component: FormularzComponent},
-  { path: 'usun', component: UsunComponent},
+  { path: 'edytuj/:id', component: FormularzComponent},
+  { path: 'usun/:id', component: UsunComponent},
   { path: '', redirectTo: '/lista', pathMatch: 'full'}
 ];
 

@@ -13,7 +13,11 @@
                 <td>{{osoba.id}}</td>
                 <td>{{osoba.imie}}</td>
                 <td>{{osoba.nazwisko}}</td>
-                <td><a [routerLink]="['/lista','detale', osoba.id]">Detale</a></td>
+                <td>
+                    <a [routerLink]="['/lista','detale', osoba.id]">Detale</a>
+                    <a [routerLink]="['/usun', osoba.id]">Usuń osobę ({{osoba.id}})</a>
+                    <a [routerLink]="['/edytuj', osoba.id]">Edytuj ({{osoba.id}})</a>
+                </td>
             </tr>
         </table>
     </div>

@@ -2,6 +2,10 @@
 
 {{ forma.value | json }}
 
+{{ forma.controls.imie.value }}
+<p>
+{{ forma.controls.imie.errors | json}}
+</p>
 <form [formGroup]="forma">
     <p>
         <label for="imieid">Imię</label>

@@ -1,5 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+class NaszValidator {
+  static reszta(wartosc: number, modulo: number) {
+    return function (control: FormControl) {
+      const biezacaWartosc = control.value;
+
+      if (biezacaWartosc % wartosc === modulo) {
+        return null;
+      } else {
+        return { "zle": "reszta z dzielenia"+ biezacaWartosc + " przez "+ wartosc+" nie wynosi " + modulo};
+      }
+    }
+  }
+}
 
 @Component({
   selector: 'app-formularz',
@@ -9,7 +23,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class FormularzComponent implements OnInit, OnDestroy {
 
   public forma:FormGroup = new FormGroup( {
-    imie: new FormControl('Adam', {validators: [], updateOn: "change"}),
+    imie: new FormControl('Adam', {validators: [Validators.email, NaszValidator.reszta(3,2)], updateOn: "change"}),
     nazwisko: new FormControl('Kowalski', {validators: [], updateOn: "change"})
   }); 
 
