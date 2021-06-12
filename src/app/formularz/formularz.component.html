@@ -1,10 +1,12 @@
-<h2>Dodaj osobę</h2>
+<h2>{{czynnosc}} osobę</h2>
 
+<!--
 {{ forma.value | json }}
 
 {{ forma.controls.imie.value }}
 
 ----{{ forma.valid | json }}----
+-->
 
 <form [formGroup]="forma">
     <div>
@@ -49,5 +51,8 @@
         <label for="mezczyznaid">2.termin</label>
         <input type="checkbox" formControlName="b" value="true" id="mezczyznaid">
         </fieldset>
+    </div>
+    <div *ngIf="forma.valid">
+        <input type="button" value="Zapisz" (click)="zapisz()">
     </div>
 </form>

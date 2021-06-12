@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ListaService, Osoba } from '../lista.service';
 
 class NaszValidator {
   static wymaganyWiek(dolna: number, gorna: number) {
@@ -26,9 +28,11 @@ class NaszValidator {
 })
 export class FormularzComponent implements OnInit, OnDestroy {
 
+  public params: Params;
+  public czynnosc = 'Dodaj';
   public forma:FormGroup = new FormGroup( {
-    imie: new FormControl('Adam', {validators: [], updateOn: "change"}),
-    nazwisko: new FormControl('Kowalski', {validators: [], updateOn: "change"}),
+    imie: new FormControl('', {validators: [], updateOn: "change"}),
+    nazwisko: new FormControl('', {validators: [], updateOn: "change"}),
     rok: new FormControl(1978, {validators: [NaszValidator.wymaganyWiek(18,100)], updateOn: "change"}),
     szczepionka: new FormControl(null, {validators: [Validators.required], updateOn: "change"}),
     plec: new FormControl(null, {validators: [Validators.required], updateOn: "change"}),
@@ -38,9 +42,28 @@ export class FormularzComponent implements OnInit, OnDestroy {
     })
   }); 
 
+  public zapisz() {
+    const stanFormy: {[p:string]: AbstractControl} = this.forma.controls;
+    const osoba: Osoba = {
+      imie: stanFormy.imie.value,
+      nazwisko: stanFormy.nazwisko.value,
+      plec: stanFormy.plec.value,
+      rok: stanFormy.rok.value,
+      szczepionka: stanFormy.szczepionka.value,
+      zyczenia: {
+        a: stanFormy.zyczenia.value.a,
+        b: stanFormy.zyczenia.value.b
+      }
+    };
+    this.listaService.zapiszOsobe(osoba).subscribe( () => {
+      console.log('Zapisano osobe!');
+    })
+  }
 
-  constructor() {
-    console.log('konstruktor');
+  constructor(public listaService: ListaService, public route: ActivatedRoute) { 
+    this.route.params.subscribe( (params: Params) => {
+      this.params = params;
+    });
   }
 
   ngOnInit(): void {

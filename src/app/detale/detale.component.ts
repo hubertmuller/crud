@@ -1,7 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { inject } from '@angular/core/testing';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ListaService, Osoba } from '../lista.service';
+
+@Pipe({
+  name: "szczepionka"
+})
+export class SzczepionkaPipe {
+  transform(nazwa: String) {
+    if (nazwa === 'm') {
+      return 'Moderna';
+    } else if (nazwa === 'j') {
+      return 'Johnson&Johnson';
+    } else {
+      return 'Nieznana';
+    }
+  }
+}
 
 @Component({
   selector: 'app-detale',

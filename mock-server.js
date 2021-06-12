@@ -5,9 +5,10 @@ const server = http.createServer( (req, res) => {
     console.log('wlasnie przyszlo zapytanie.');
 
     res.setHeader('Content-type', 'application/json');
+
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
     if (req.method === 'GET' && req.url === '/api/lista') {
         res.end(`[
@@ -34,7 +35,12 @@ const server = http.createServer( (req, res) => {
             "imie": "Tomasz",
             "nazwisko": "Król`+ Math.ceil(Math.random()*32) +`",
             "rok": 1990,
-            "szczepionka": "m"
+            "szczepionka": "m",
+            "plec": "k",
+            "zyczenia": {
+                "a": true,
+                "b": true
+            }
         }`);
     }
     else {

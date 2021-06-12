@@ -1,1 +1,7 @@
-<p>usun works!</p>
+<h1 *ngIf="deleted">
+Udało się usunąć osobę o id={{id}}
+</h1>
+
+<h1 *ngIf="!deleted">
+    Usuwam...
+</h1>
