@@ -33,8 +33,8 @@ const server = http.createServer( (req, res) => {
             "id": ` + id +`,
             "imie": "Tomasz",
             "nazwisko": "Król`+ Math.ceil(Math.random()*32) +`",
-            "wiek": 32,
-            "pesel": "2412421412"
+            "rok": 1990,
+            "szczepionka": "m"
         }`);
     }
     else {

@@ -25,6 +25,11 @@ export interface Osoba {
   id: number;
   imie: String;
   nazwisko: String;
-  wiek?: number;
-  pesel?: String;
+  plec: String;
+  zyczenia: {
+    a: boolean;
+    b: boolean;
+  }
+  szczepionka: String;
+  rok: number;
 }

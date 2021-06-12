@@ -1,4 +1,9 @@
+@use 'def';
+
 h1 {
     width: 100%;
-    font-size: 1.5rem;
+    //font-size: def.$duzyNaglowekRozmiar;
+    @include def.test
 }
+
+

@@ -1,0 +1,6 @@
+$bazowyRozmiar: 3rem;
+$duzyNaglowekRozmiar: $bazowyRozmiar/2.2;
+
+@mixin test() {
+    font-size: $duzyNaglowekRozmiar;
+}
